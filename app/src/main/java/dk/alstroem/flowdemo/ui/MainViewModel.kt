@@ -21,6 +21,7 @@ class MainViewModel(
     fun initStateFlow() {
         viewModelScope.launch {
             // Collect a flow
+
             repo.testFlow.collect { result ->
                 _stateFlow.value = result
             }
@@ -30,9 +31,4 @@ class MainViewModel(
             _stateFlow.value = result
         }
     }
-
-    private val _sharedFlow = MutableSharedFlow<String>()
-    val sharedFlow: SharedFlow<String> = _sharedFlow
-
-
 }
